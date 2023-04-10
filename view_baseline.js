@@ -639,7 +639,6 @@ $(`<div id="survey-dialog" title="Survey">
     <div id="survey-explanation" style="section">Before you begin the task, please indicate how much you agree or disagree with each of the following statements:</div>
     <form id="survey-form">
     <br/>
-
     <div id="motivation1_question">I enjoy piloting/beta-testing next-generation technology</div>
     <label id="motivation1_a0_label"><input id="motivation1_a0" type="radio" name="motivation1" value="0" required> Strongly Disagree</label>
     <label id="motivation1_a1_label"><input id="motivation1_a1" type="radio" name="motivation1" value="1" required> Disagree</label>
@@ -648,7 +647,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="motivation1_a4_label"><input id="motivation1_a4" type="radio" name="motivation1" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <div id="motivation2_question">I only learn the technology I have to know to get my work done</div>
     <label id="motivation2_a0_label"><input id="motivation2_a0" type="radio" name="motivation2" value="0" required> Strongly Disagree</label>
     <label id="motivation2_a1_label"><input id="motivation2_a1" type="radio" name="motivation2" value="1" required> Disagree</label>
@@ -657,7 +655,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="motivation2_a4_label"><input id="motivation2_a4" type="radio" name="motivation2" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <div id="info_proc_question">When problem-solving, I prefer to collect as much information as possible before making any changes</div>
     <label id="info_proc_a0_label"><input id="info_proc_a0" type="radio" name="info_proc" value="0" required> Strongly Disagree</label>
     <label id="info_proc_a1_label"><input id="info_proc_a1" type="radio" name="info_proc" value="1" required> Disagree</label>
@@ -666,7 +663,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="info_proc_a4_label"><input id="info_proc_a4" type="radio" name="info_proc" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <div id="efficacy_question">If I encounter a problem with computer software, I am confident I would be able to fix it</div>
     <label id="efficacy_a0_label"><input id="efficacy_a0" type="radio" name="efficacy" value="0" required> Strongly Disagree</label>
     <label id="efficacy_a1_label"><input id="efficacy_a1" type="radio" name="efficacy" value="1" required> Disagree</label>
@@ -675,7 +671,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="efficacy_a4_label"><input id="efficacy_a4" type="radio" name="efficacy" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <div id="risk_question">When given a choice, I will usually pick the lower-risk option, even if it has a lower reward</div>
     <label id="risk_a0_label"><input id="risk_a0" type="radio" name="risk" value="0" required> Strongly Disagree</label>
     <label id="risk_a1_label"><input id="risk_a1" type="radio" name="risk" value="1" required> Disagree</label>
@@ -684,7 +679,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="risk_a4_label"><input id="risk_a4" type="radio" name="risk" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <div id="tinkering_question">When using new software, I like to experiment and tinker with the available features</div>
     <label id="tinkering_a0_label"><input id="tinkering_a0" type="radio" name="tinkering" value="0" required> Strongly Disagree</label>
     <label id="tinkering_a1_label"><input id="tinkering_a1" type="radio" name="tinkering" value="1" required> Disagree</label>
@@ -693,7 +687,6 @@ $(`<div id="survey-dialog" title="Survey">
     <label id="tinkering_a4_label"><input id="tinkering_a4" type="radio" name="tinkering" value="4" required> Strongly Agree</label>
     <br/>
     <br/>
-
     <button id="submit-survey" class="ui-button ui-widget ui-corner-all" type="submit">
         Submit
     </button>

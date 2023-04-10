@@ -1,5 +1,21 @@
 // ---- Define your dialogs  and panels here ----
+var effective_container = define_new_effective_permissions("effective-panel", true);
+$('#sidepanel').append(effective_container);
 
+$('#sidepanel').append(define_new_user_select_field("effective-panel", "select user", function(selected_user){
+    $('#effective-panel').attr('username', selected_user);
+
+}));
+$('#effective-panel').attr('filepath', '/C');
+var dialog = define_new_dialog("effective-panel");
+$('.perm_info').click(function(){
+    console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
+    var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);
+    var exp_string = get_explanation_text(exp_object);
+    dialog.text(exp_string);
+    dialog.dialog('open');
+
+});
 
 
 // ---- Display file structure ----
