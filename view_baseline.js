@@ -364,7 +364,7 @@ function update_effective_user() {
       if (allow_user_action(file, selected_user, p)) {
         // find the checkbox cell and put a checkbox there.
         $(document.getElementById(`adv_effective_checkcell_${p}`)).append(
-          `<span id="adv_effective_checkbox_${p}" class="oi oi-check"/>`
+          `<span id="adv_effective_checkbox_${p}" class="oi oi-check">${p}</span>`
         );
       }
     }
@@ -391,7 +391,7 @@ for (let p of Object.values(permissions)) {
   let row = $(`
     <tr id="adv_effective_row_${p}">
         <td id="adv_effective_checkcell_${p}"class="effectivecheckcell"></td>
-        <td id="adv_effective_name_${p}">${p}</td>
+        <td id="adv_effective_name_${p}"></td>
     </tr>
     `);
   $("#adv_effective_effective_list").append(row);
