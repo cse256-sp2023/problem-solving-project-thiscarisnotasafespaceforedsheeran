@@ -1,8 +1,6 @@
 // Configuration
 show_starter_dialogs = false; // set this to "false" to disable the survey and 3-minute timer. Set to "true" before submitting to MTurk!!
 
-// ---- Set up main Permissions dialog ----
-$(`<img src="/core/tips.png" width="500" height="600">`);
 
 // --- Create all the elements, and connect them as needed: ---
 // Make permissions dialog:
@@ -11,7 +9,7 @@ perm_dialog = define_new_dialog(
   (title = "Permissions"),
   (options = {
     // The following are standard jquery-ui options. See https://jqueryui.com/dialog/
-    height: 500,
+    height: 600,
     width: 400,
     buttons: {
       OK: {
@@ -40,7 +38,11 @@ obj_name_div = $(
 
 //Make the div with the explanation about special permissions/advanced settings:
 advanced_expl_div = $(
-  '<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced.</div>'
+  `<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced.</div>
+  <div id="extrainfo">
+  Blue checkmarks are editable permissions on this level,<br>
+  Gray checkmarks are inherited from parent objects, further information is on the effective permissions page.
+  </div>`
 );
 
 // Make the (grouped) permission checkboxes table:
