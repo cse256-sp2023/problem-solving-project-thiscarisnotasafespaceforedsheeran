@@ -38,10 +38,12 @@ obj_name_div = $(
 
 //Make the div with the explanation about special permissions/advanced settings:
 advanced_expl_div = $(
-  `<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced.</div>
-  <div id="extrainfo">
-  Blue checkmarks are editable permissions on this level,<br>
-  Gray checkmarks are inherited from parent objects, further information is on the effective permissions page.
+  `<div id="extrainfo">
+  <strong>Blue checkmarks</strong>: editable permissions on this level<br>
+  <strong>Gray checkmarks</strong>: inherited from parent objects <br><br>
+  <div id="permdialog_advanced_explantion_text">Click <strong>advanced</strong> for inherited and special permissions/advanced settings</div>
+  
+
   </div>`
 );
 
