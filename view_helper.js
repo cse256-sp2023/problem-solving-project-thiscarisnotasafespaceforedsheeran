@@ -60,12 +60,6 @@ function make_user_list(id_prefix, usermap, add_attributes = false) {
     return u_elements
 }
 
-function make_file_list(){
-    let files = [];
-    console.log($('effective-container').attr('filepath'));
-    // for VICKY
-}
-console.log($('effective-container').attr('filepath'));
 // --- helper functions to define various semi-permanent elements.
 // --- Only call these once for each new dialog/selection/item etc. you are defining! (NOT each time you want to open/close/hide a dialog)
 
