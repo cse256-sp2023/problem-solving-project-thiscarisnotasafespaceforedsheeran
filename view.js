@@ -6,7 +6,7 @@ let files = [];
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
 function make_file_element(file_obj) {
     let file_hash = get_full_path(file_obj)
-    files.push(file_obj.filename);
+    
     if(file_obj.is_folder) {
         let folder_elem = $(`<div class='folder' id="${file_hash}_div">
             <h3 id="${file_hash}_header">
@@ -29,6 +29,7 @@ function make_file_element(file_obj) {
         return folder_elem
     }
     else {
+        files.push(file_hash);
         return $(`<div class='file'  id="${file_hash}_div">
             <span class="oi oi-file" id="${file_hash}_icon"/> ${file_obj.filename}
             <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
@@ -51,20 +52,21 @@ $('#sidepanel').append(header);
 $('#sidepanel').append(define_new_user_select_field("effective-panel", "pick a user", function(selected_user){
     $('#effective-panel').attr('username', selected_user);
 }));
-$('#sidepanel').append(pick_file(files, "picky"));
+$('#sidepanel').append(pick_file(files, "picky", function(newfile) {
+    // if(newfile != "C"){
+    //     newfile = "/C/" + newfile;
+    // }
+    // else {
+    //     newfile = "/C";
+    // }
+    console.log("!!!!", newfile);
+    
+    $('#effective-panel').attr('filepath', newfile);
+}));
 
 $('#sidepanel').append(effective_container);
 //i want to pick the file!!!!!!!
-let selected_file = $('#pick-file_field').attr('selected-file');
-console.log("!!!!", selected_file);
-// $('#sidepanel').append(pick_file(files, "picky"));
-if(selected_file != "C"){
-    selected_file = "/C" + selected_file;
-}
-else {
-    selected_file = "/C";
-}
-$('#effective-panel').attr('filepath', selected_file);
+
 var dialog = define_new_dialog("effective-panel");
 $('.perm_info').click(function(){
     console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));

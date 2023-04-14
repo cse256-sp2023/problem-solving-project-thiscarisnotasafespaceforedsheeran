@@ -507,7 +507,7 @@ function define_new_user_select_field(id_prefix, select_button_text, on_user_cha
 }
 
 
-function pick_file(files, select_button_text){
+function pick_file(files, select_button_text, onchange = function(file){}){
     console.log(files);
     let id_prefix = "pick-file";
 
@@ -560,9 +560,10 @@ function pick_file(files, select_button_text){
 
     // Set up an observer to watch the attribute change and change the field
     let field_selector = sel_section.find(`#${id_prefix}_field`)
-    define_attribute_observer(field_selector, 'selected_file', function(new_username){
-        field_selector.text(new_username)
+    define_attribute_observer(field_selector, 'selected_file', function(new_file){
+        field_selector.text(new_file)
         // call the function for additional processing of user change:
+        onchange(new_file);
         // on_user_change(new_username)
     })
     return sel_section;
