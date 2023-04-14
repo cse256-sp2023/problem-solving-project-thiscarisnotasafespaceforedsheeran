@@ -1,29 +1,12 @@
 // ---- Define your dialogs  and panels here ----
-var effective_container = define_new_effective_permissions("effective-panel", true);
-$('#sidepanel').append(effective_container);
 
-$('#sidepanel').append(define_new_user_select_field("effective-panel", "select user", function(selected_user){
-    $('#effective-panel').attr('username', selected_user);
-
-}));
-$('#effective-panel').attr('filepath', '/C');
-var dialog = define_new_dialog("effective-panel");
-$('.perm_info').click(function(){
-    console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
-    var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);
-    var exp_string = get_explanation_text(exp_object);
-    dialog.text(exp_string);
-    dialog.dialog('open');
-
-});
-
-
+let files = [];
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
 function make_file_element(file_obj) {
     let file_hash = get_full_path(file_obj)
-
+    files.push(file_hash);
     if(file_obj.is_folder) {
         let folder_elem = $(`<div class='folder' id="${file_hash}_div">
             <h3 id="${file_hash}_header">
@@ -46,6 +29,7 @@ function make_file_element(file_obj) {
         return folder_elem
     }
     else {
+        
         return $(`<div class='file'  id="${file_hash}_div">
             <span class="oi oi-file" id="${file_hash}_icon"/> ${file_obj.filename}
             <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
@@ -59,6 +43,31 @@ for(let root_file of root_files) {
     let file_elem = make_file_element(root_file)
     $( "#filestructure" ).append( file_elem);    
 }
+
+
+
+var effective_container = define_new_effective_permissions("effective-panel", true);
+let header = $(`<h3>Check a user's permissions:</h3>`);
+$('#sidepanel').append(header);
+$('#sidepanel').append(define_new_user_select_field("effective-panel", "pick a user", function(selected_user){
+    $('#effective-panel').attr('username', selected_user);
+}));
+$('#sidepanel').append(pick_file(files, "picky", function(newfile) {
+    $('#effective-panel').attr('filepath', newfile);
+}));
+
+$('#sidepanel').append(effective_container);
+var dialog = define_new_dialog("effective-panel");
+$('.perm_info').click(function(){
+    console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
+    var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);
+    var exp_string = get_explanation_text(exp_object);
+    dialog.text(exp_string);
+    dialog.dialog('open');
+
+});
+
+let folder = $('.folder_contents');
 
 
 

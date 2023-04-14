@@ -60,7 +60,6 @@ function make_user_list(id_prefix, usermap, add_attributes = false) {
     return u_elements
 }
 
-
 // --- helper functions to define various semi-permanent elements.
 // --- Only call these once for each new dialog/selection/item etc. you are defining! (NOT each time you want to open/close/hide a dialog)
 
@@ -430,10 +429,11 @@ function define_file_permission_groups_list(id_prefix){
 
 // Make a selectable list which will store all of the users, and automatically keep track of which one is selected.
 all_users_selectlist = define_single_select_list('user_select_list')
-
+all_files_selectlist = define_single_select_list('file_select_list');
 // Make the elements which reperesent all users, and add them to the selectable
 all_user_elements = make_user_list('user_select', all_users)
 all_users_selectlist.append(all_user_elements)
+
 
 // Make the dialog:
 user_select_dialog = define_new_dialog('user_select_dialog2', 'Select User', {
@@ -459,6 +459,7 @@ user_select_dialog = define_new_dialog('user_select_dialog2', 'Select User', {
         }
     }
 })
+
 
 // add stuff to the dialog:
 user_select_dialog.append(all_users_selectlist)
@@ -497,6 +498,70 @@ function define_new_user_select_field(id_prefix, select_button_text, on_user_cha
     })
 
     return sel_section
+}
+
+
+function pick_file(files, select_button_text, onchange = function(file){}){
+    console.log(files);
+    let id_prefix = "pick-file";
+
+    for(let i = 0; i < files.length; i++){
+        let name = files[i];
+        user_elem = $(`<div class="ui-widget-content" id="${id_prefix}_${name}" name="${name}">
+        <span id="${id_prefix}_${name}_text">${name} </span>
+    </div>`);
+
+        all_files_selectlist.append(user_elem);
+    }
+
+    let file_dialog = define_new_dialog('file_select_dialog2', 'Select File', {
+        buttons: {
+            Cancel: {
+                text: "Cancel",
+                id: "file_select_cancel_button",
+                click: function() {
+                    $( this ).dialog( "close" );
+                },
+            },
+            OK: {
+                text: "OK",
+                id: "user_select_ok_button",
+                click: function() {
+                    // When "OK" is clicked, we want to populate some other element with the selected user name 
+                    //(to pass along the selection information to whoever opened this dialog)
+                    let to_populate_id = $(this).attr('to_populate') // which field do we need to populate?
+                    let selected_value = all_files_selectlist.attr('selected_item') // what is the user name that was selected?
+                    $(`#pick-file_field`).attr('selected_file', selected_value) // populate the element with the id
+                    $( this ).dialog( "close" );
+                }
+            }
+        }
+    })
+    file_dialog.append(all_files_selectlist);
+    
+
+// define a n
+    let sel_section = $(`<div id="${id_prefix}_line" class="section">
+            <span id="${id_prefix}_field" class="ui-widget-content" style="width: 80%;display: inline-block;">&nbsp</span>
+            <button id="${id_prefix}_button" class="ui-button ui-widget ui-corner-all">${select_button_text}</button>
+        </div>`)
+
+    // Open user select on button click:
+    sel_section.find(`#${id_prefix}_button`).click(function(){
+        file_dialog.attr('to_populate',  $(this).attr('to_populate'));
+        file_dialog.dialog('open');
+    })
+
+    // Set up an observer to watch the attribute change and change the field
+    let field_selector = sel_section.find(`#${id_prefix}_field`)
+    define_attribute_observer(field_selector, 'selected_file', function(new_file){
+        field_selector.text(new_file)
+        // call the function for additional processing of user change:
+        onchange(new_file);
+        // on_user_change(new_username)
+    })
+    return sel_section;
+
 }
 
 //---- misc. ----
