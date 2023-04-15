@@ -49,13 +49,30 @@ for(let root_file of root_files) {
 var effective_container = define_new_effective_permissions("effective-panel", true);
 let header = $(`<h3>Check a user's permissions:</h3>`);
 $('#sidepanel').append(header);
-$('#sidepanel').append(define_new_user_select_field("effective-panel", "pick a user", function(selected_user){
+$('#sidepanel').append(define_new_user_select_field("effective-panel", "select user", function(selected_user){
     $('#effective-panel').attr('username', selected_user);
 }));
-$('#sidepanel').append(pick_file(files, "picky", function(newfile) {
+$('#sidepanel').append(pick_file(files, "select file", function(newfile) {
     $('#effective-panel').attr('filepath', newfile);
 }));
+let refresh = $(`<input type="button" value="refresh id="refresh"/>`);
+refresh.click(()=>{
+    var effective_container = define_new_effective_permissions("effective-panel", true);
+    console.log("!!! selected user:", $('#effective-panel_field').attr('selected_user'));
+    console.log("!!! selected file: ",  $('#pick-file_field').attr('selected_file'));
+    $('#effective-panel').attr('username', $('#effective-panel_field').attr('selected_user'));
+    $('#effective-panel').attr('filepath', $('#pick-file_field').attr('selected_file'));
+    $('#effective-panel').remove();
+    $('#sidepanel').append(effective_container);
+    // $('#sidepanel').append(effective_container);
 
+    // $('#effective-panel').attr('username', selected_user);
+    // $('#effective-panel').attr('filepath', newfile);
+    // let to_populate_id = $(this).attr('to_populate') // which field do we need to populate?
+    // let selected_value = all_files_selectlist.attr('selected_item') // what is the user name that was selected?
+    // $(`#pick-file_field`).attr('selected_file', selected_value)
+})
+$('#sidepanel').append(refresh);
 $('#sidepanel').append(effective_container);
 var dialog = define_new_dialog("effective-panel");
 $('.perm_info').click(function(){
