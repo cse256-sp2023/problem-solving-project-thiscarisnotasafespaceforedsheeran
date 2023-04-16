@@ -104,7 +104,47 @@
                     </table>
                    
                 </div>
-                <img src="/core/tips.png" width=500 height=500>
+                <div id="tips">
+                    <div id="image">
+                        <img src="/core/tips.png" width=500 height=500>
+                    </div>
+                    <div id="information">
+                        <h3>File Permissions Information</h3>
+                        <ul style="list-style-type: none;">
+                            <li>
+                                <h4 class="headers" id="direct_perms_header">Direct Permissions</h4>
+                                <div id="directperms" >
+                                    <ul>
+                                        <li>The main permissions that a user can have are as follows:
+                                            <ul style="list-style-type: none; text-indent: 25px">
+                                                <li>- Read<br></li>
+                                                <li>- Write</li>
+                                                <li>- Read and Execute</li>
+                                                <li>- Modify</li>
+                                                <li>- Full Control</li>
+                                                    <ul style="text-indent: 50px">
+                                                        <li>A user with full control will have all of the above permissions</li>
+                                                    </ul> 
+                                                <!-- </li> -->
+                                            </ul>
+                                        </li>
+                                        <li>Any permissions set to <strong>deny</strong> will override any other permissions, even if they are set to <em>allow</em> otherwise.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <h4 class="headers" id="inherit_perms_header">Inherited Permissions</h4>
+                                <div id="inheritperms">
+                                    <ul>
+                                        <li>Inheritance will apply to a file if inheritance is enabled in the advanced permissions file, and if those permissions were not denied on the direct permissions level.</li>
+                                        <li>Any permissions that are closer to the direct file will take precedence (i.e. override the others)</li>
+                                        <li>To overwrite inherited permissions, a user can be denied on a file that is allowed via inherited permissions. Alternatively, the inherited permissions can just be removed at the level that they are assigned (the parent element).</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>    
+                    </div>
+                </div>
                 <!-- structure for the Advanced dialog: -->
                 <div title="Advanced Security Settings" id="advdialog" style="overflow:hidden">
                     <div id="advtabs">
@@ -217,6 +257,34 @@
     <script id="user_data_model_script" src="core/user_data_model.js">
     </script>
     <script id="script-added-for-256" src="core/tracker.js">
+    </script>
+    <script>
+        document.getElementById("direct_perms_header").addEventListener("click", ()=>{
+            if($('#directperms').css("visibility") == 'hidden'){
+                $('#direct_perms_header').css("background-color", "#007fff");
+                $('#direct_perms_header').css("color", "white");
+                $('#directperms').css("visibility", 'visible');
+            }
+            else {
+                $('#direct_perms_header').css("background-color", "white");
+                $('#direct_perms_header').css("color", "black");
+                $('#directperms').css("visibility", 'hidden');
+            }
+                                
+        });
+        document.getElementById("inherit_perms_header").addEventListener("click", ()=>{
+            if($('#inheritperms').css("visibility") == 'hidden'){
+                $('#inherit_perms_header').css("background-color", "#007fff");
+                $('#inherit_perms_header').css("color", "white");
+                $('#inheritperms').css("visibility", 'visible');
+            }
+            else {
+                $('#inherit_perms_header').css("background-color", "white");
+                $('#inherit_perms_header').css("color", "black")
+                $('#inheritperms').css("visibility", 'hidden');
+            }
+                                
+        });
     </script>
 </body>
 

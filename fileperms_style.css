@@ -44,3 +44,20 @@
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
+#information{
+    list-style: circle;
+}
+#tips {
+    display: flex;
+}
+#directperms, #inheritperms {
+    visibility: hidden;
+}
+.headers {
+    padding: 5px;
+    border-style: solid;
+}
+.headers:hover{
+    background-color: #007fff;
+    cursor: pointer;
+}
