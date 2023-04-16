@@ -267,6 +267,12 @@
             }
             else {
                 $('#direct_perms_header').css("background-color", "white");
+                $("#direct_perms_header").mouseenter(function() {
+                    $(this).css("background-color","#007fff");
+                });
+                $("#direct_perms_header").mouseleave(function() {
+                    $(this).css("background-color","white");
+                })
                 $('#direct_perms_header').css("color", "black");
                 $('#directperms').css("visibility", 'hidden');
             }
@@ -280,10 +286,16 @@
             }
             else {
                 $('#inherit_perms_header').css("background-color", "white");
+                // thank you to stack overflow for helping me here https://stackoverflow.com/questions/21051440/how-to-define-the-css-hover-state-in-a-jquery-selector
+                $("#inherit_perms_header").mouseenter(function() {
+                    $(this).css("background-color","#007fff");
+                });
+                $("#inherit_perms_header").mouseleave(function() {
+                    $(this).css("background-color","white");
+                })
                 $('#inherit_perms_header').css("color", "black")
                 $('#inheritperms').css("visibility", 'hidden');
             }
-                                
         });
     </script>
 </body>
