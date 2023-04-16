@@ -47,17 +47,27 @@ for(let root_file of root_files) {
 
 
 var effective_container = define_new_effective_permissions("effective-panel", true);
-let header = $(`<h3>Check a user's permissions:</h3>`);
+let header = $(`<h3 id="headerperms" title="After changing permissions, you may need to reinput these field to see updated permissions!">Check a user's permissions:</h3>`);
 $('#sidepanel').append(header);
-$('#sidepanel').append(define_new_user_select_field("effective-panel", "pick a user", function(selected_user){
+var select_user_field = define_new_user_select_field("effective-panel", "select user", function(selected_user){
     $('#effective-panel').attr('username', selected_user);
-}));
-$('#sidepanel').append(pick_file(files, "picky", function(newfile) {
+});
+var select_file_field = pick_file(files, "select file", function(newfile) {
     $('#effective-panel').attr('filepath', newfile);
-}));
-
+});
+$('#sidepanel').append(select_user_field);
+$('#sidepanel').append(select_file_field);
+let refresh = $(`<input type="button" value="refresh" id="refresh"/>`);
+refresh.click(()=>{
+    $('#effective-panel').attr('username', $('#effective-panel_field').attr('selected_user'));
+    $('#effective-panel').attr('filepath', $('#pick-file_field').attr('selected_file'));
+    effective_container = define_new_effective_permissions("effective-panel", true);
+})
+// add the container we just made to the page
+$('#sidepanel').append(refresh);
 $('#sidepanel').append(effective_container);
 var dialog = define_new_dialog("effective-panel");
+// now give functionality to the little buttons
 $('.perm_info').click(function(){
     console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
     var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);

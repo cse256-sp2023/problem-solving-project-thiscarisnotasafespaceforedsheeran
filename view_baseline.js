@@ -62,7 +62,7 @@ file_permission_users = define_single_select_list(
   }
 );
 file_permission_users.css({
-  height: "80px",
+  height: "100px",
 });
 
 // Make button to add a new user to the list:
@@ -85,6 +85,7 @@ perm_add_user_select = define_new_user_select_field(
         new_user_elem = make_user_elem("permdialog_file_user", selected_user);
         file_permission_users.append(new_user_elem);
       }
+      
     }
   })
 );
@@ -236,12 +237,12 @@ function make_all_users_list(id_prefix, attr_set_id, height = 80) {
 
   all_user_list.selectable({
     selected: function (e, ui) {
+
       // Unselect any previously selected (normally, selectable allows multiple selections)
       $(ui.selected)
         .addClass("ui-selected")
         .siblings()
         .removeClass("ui-selected");
-
       $(`#${attr_set_id}`).attr(
         "username",
         ui.selected.getAttribute("username")
@@ -258,6 +259,7 @@ function make_all_users_list(id_prefix, attr_set_id, height = 80) {
           ),
         })
       );
+
     },
   });
 
@@ -354,6 +356,7 @@ function update_effective_user() {
     selected_username in all_users
   ) {
     let selected_user = all_users[selected_username];
+    // console.log("user clicked?");
 
     let filepath = $("#advdialog").attr("filepath");
     let file = path_to_file[filepath];

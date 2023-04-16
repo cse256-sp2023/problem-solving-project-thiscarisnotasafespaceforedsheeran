@@ -17,8 +17,16 @@
     bottom: 0;
     right: 0;
 }
-
-
+#headerperms {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    margin-bottom: 5px;
+}
+#headerperms:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: red;
+}
 #mturk-top-banner-drop-down-content {
     position: absolute;
     width: 99%;
@@ -35,4 +43,21 @@
 
 .no-close .ui-dialog-titlebar-close {
     display: none;
+}
+#information{
+    list-style: circle;
+}
+#tips {
+    display: flex;
+}
+#directperms, #inheritperms {
+    visibility: hidden;
+}
+.headers {
+    padding: 5px;
+    border-style: solid;
+}
+.headers:hover{
+    background-color: #007fff;
+    cursor: pointer;
 }
