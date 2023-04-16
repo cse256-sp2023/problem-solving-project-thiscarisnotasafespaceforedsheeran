@@ -17,8 +17,16 @@
     bottom: 0;
     right: 0;
 }
-
-
+#headerperms {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    margin-bottom: 5px;
+}
+#headerperms:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: red;
+}
 #mturk-top-banner-drop-down-content {
     position: absolute;
     width: 99%;
