@@ -55,7 +55,9 @@
 }
 .headers {
     padding: 5px;
+    width: fit-content;
     border-style: solid;
+    background-color: white;
 }
 .headers:hover{
     background-color: #007fff;
