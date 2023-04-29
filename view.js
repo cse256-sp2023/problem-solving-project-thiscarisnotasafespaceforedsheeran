@@ -47,14 +47,20 @@ for(let root_file of root_files) {
 
 
 var effective_container = define_new_effective_permissions("effective-panel", true);
-let header = $(`<h3 id="headerperms" title="After changing permissions, you may need to reinput these field to see updated permissions!">Check a user's permissions:</h3>`);
+let header = $(`<h3>Check a user's permissions:</h3>`);
 $('#sidepanel').append(header);
 let question = $(`<h5> how do I use this? </h5>`);
+question.css('border-style', 'solid');
+question.css('padding', '5px');
+question.css('width', 'fit-content');
+
 question.hover(()=>{
-    question.css('color', '#147fff');
+    question.css('background-color', '#147fff');
+    question.css('color', 'white');
     question.css('cursor', 'pointer');
 })
 question.mouseout(()=>{
+    question.css('background-color', 'white');
     question.css('color', 'black');
 
 }
