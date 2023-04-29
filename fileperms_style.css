@@ -50,16 +50,11 @@
 #tips {
     display: flex;
 }
-#directperms, #inheritperms {
-    visibility: hidden;
-}
 .headers {
     padding: 5px;
     width: fit-content;
     border-style: solid;
-    background-color: white;
-}
-.headers:hover{
+    color: white;
     background-color: #007fff;
-    cursor: pointer;
+    
 }

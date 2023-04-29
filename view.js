@@ -68,14 +68,17 @@ $('#sidepanel').append(refresh);
 $('#sidepanel').append(effective_container);
 var dialog = define_new_dialog("effective-panel");
 // now give functionality to the little buttons
+$('.perm_info').hover(()=>{
+    $('.perm_info').css('cursor', 'pointer');
+})
 $('.perm_info').click(function(){
     console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
     var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);
     var exp_string = get_explanation_text(exp_object);
     dialog.text(exp_string);
     dialog.dialog('open');
-
 });
+
 
 let folder = $('.folder_contents');
 
