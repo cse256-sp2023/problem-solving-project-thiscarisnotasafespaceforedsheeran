@@ -259,48 +259,48 @@
     <script id="script-added-for-256" src="core/tracker.js">
     </script>
     <script>
-        document.getElementById("direct_perms_header").addEventListener("click", ()=>{
-            if($('#directperms').css("visibility") == 'hidden'){
-                $('#direct_perms_header').css("background-color", "#007fff");
-                $('#direct_perms_header').css("color", "white");
-                $('#directperms').css("visibility", 'visible');
-            }
-            else {
-                $('#direct_perms_header').css("color", "black");
-                $('#direct_perms_header').css("background-color", "white");
-                $("#direct_perms_header").mouseenter(function() {
-                    $(this).css("background-color","#007fff");
-                });
-                $("#direct_perms_header").mouseleave(function() {
-                    $(this).css("background-color","white");
-                    $(this).css("color", "black");
+        // document.getElementById("direct_perms_header").addEventListener("click", ()=>{
+        //     if($('#directperms').css("visibility") == 'hidden'){
+        //         $('#direct_perms_header').css("background-color", "#007fff");
+        //         $('#direct_perms_header').css("color", "white");
+        //         $('#directperms').css("visibility", 'visible');
+        //     }
+        //     else {
+        //         $('#direct_perms_header').css("color", "black");
+        //         $('#direct_perms_header').css("background-color", "white");
+        //         $("#direct_perms_header").mouseenter(function() {
+        //             $(this).css("background-color","#007fff");
+        //         });
+        //         $("#direct_perms_header").mouseleave(function() {
+        //             $(this).css("background-color","white");
+        //             $(this).css("color", "black");
 
-                });
-                $('#direct_perms_header').css("color", "black");
-                $('#directperms').css("visibility", 'hidden');
-            }
+        //         });
+        //         $('#direct_perms_header').css("color", "black");
+        //         $('#directperms').css("visibility", 'hidden');
+        //     }
                                 
-        });
-        document.getElementById("inherit_perms_header").addEventListener("click", ()=>{
-            if($('#inheritperms').css("visibility") == 'hidden'){
-                $('#inherit_perms_header').css("background-color", "#007fff");
-                $('#inherit_perms_header').css("color", "white");
-                $('#inheritperms').css("visibility", 'visible');
-            }
-            else {
-                // thank you to stack overflow for helping me here https://stackoverflow.com/questions/21051440/how-to-define-the-css-hover-state-in-a-jquery-selector
-                $("#inherit_perms_header").mouseenter(function() {
-                    $(this).css("background-color","#007fff");
-                });
-                $("#inherit_perms_header").mouseleave(function() {
-                    $(this).css("background-color","white");
-                    $(this).css("color", "black");
+        // });
+        // document.getElementById("inherit_perms_header").addEventListener("click", ()=>{
+        //     if($('#inheritperms').css("visibility") == 'hidden'){
+        //         $('#inherit_perms_header').css("background-color", "#007fff");
+        //         $('#inherit_perms_header').css("color", "white");
+        //         $('#inheritperms').css("visibility", 'visible');
+        //     }
+        //     else {
+        //         // thank you to stack overflow for helping me here https://stackoverflow.com/questions/21051440/how-to-define-the-css-hover-state-in-a-jquery-selector
+        //         $("#inherit_perms_header").mouseenter(function() {
+        //             $(this).css("background-color","#007fff");
+        //         });
+        //         $("#inherit_perms_header").mouseleave(function() {
+        //             $(this).css("background-color","white");
+        //             $(this).css("color", "black");
 
-                });
-                $('#inherit_perms_header').css("color", "black")
-                $('#inheritperms').css("visibility", 'hidden');
-            }
-        });
+        //         });
+        //         $('#inherit_perms_header').css("color", "black")
+        //         $('#inheritperms').css("visibility", 'hidden');
+        //     }
+        // });
     </script>
 </body>
 

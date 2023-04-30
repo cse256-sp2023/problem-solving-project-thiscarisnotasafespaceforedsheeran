@@ -47,8 +47,41 @@ for(let root_file of root_files) {
 
 
 var effective_container = define_new_effective_permissions("effective-panel", true);
-let header = $(`<h3 id="headerperms" title="After changing permissions, you may need to reinput these field to see updated permissions!">Check a user's permissions:</h3>`);
+let header = $(`<h3>Check a user's permissions:</h3>`);
 $('#sidepanel').append(header);
+let question = $(`<h5> how do I use this? </h5>`);
+question.css('border-style', 'solid');
+question.css('padding', '5px');
+question.css('width', 'fit-content');
+
+question.hover(()=>{
+    question.css('background-color', '#147fff');
+    question.css('color', 'white');
+    question.css('cursor', 'pointer');
+})
+question.mouseout(()=>{
+    question.css('background-color', 'white');
+    question.css('color', 'black');
+
+}
+)
+let q_dialog = define_new_dialog("question_dialog", "Permission Checker Information");
+let content_string = `<div>
+To use this feature, select a user and file to check the permissions for!<br><br>
+If you change permissions after intially selecting the user and file, click the refresh button to see your changes.<br><br>
+ A checkmark will appear next to the permissions that the user has on that file!<br><br>
+ To get more information on why or why not a permission is checked, click the i button next to the permission.<br><br>
+ It will give you where the permissions are coming from!
+ </div>`;
+q_dialog.append(content_string)
+// q_dialog.value = "asklfjaslf";
+$('#sidepanel').append(question);
+question.click(()=>{
+    q_dialog.dialog('option', 'height', 450);
+    q_dialog.dialog('open');
+
+})
+
 var select_user_field = define_new_user_select_field("effective-panel", "select user", function(selected_user){
     $('#effective-panel').attr('username', selected_user);
 });
@@ -68,14 +101,17 @@ $('#sidepanel').append(refresh);
 $('#sidepanel').append(effective_container);
 var dialog = define_new_dialog("effective-panel");
 // now give functionality to the little buttons
+$('.perm_info').hover(()=>{
+    $('.perm_info').css('cursor', 'pointer');
+})
 $('.perm_info').click(function(){
     console.log($('#effective-panel').attr('filepath') + ", " + $('#effective-panel').attr('username') + ", " + $(this).attr('permission_name'));
     var exp_object = allow_user_action(path_to_file[$('#effective-panel').attr('filepath')], all_users[$('#effective-panel').attr('username')], $(this).attr('permission_name'), true);
     var exp_string = get_explanation_text(exp_object);
     dialog.text(exp_string);
     dialog.dialog('open');
-
 });
+
 
 let folder = $('.folder_contents');
 
