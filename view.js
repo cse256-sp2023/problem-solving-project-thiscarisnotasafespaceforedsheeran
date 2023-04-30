@@ -70,8 +70,7 @@ let content_string = `<div>
 To use this feature, select a user and file to check the permissions for!<br><br>
 If you change permissions after intially selecting the user and file, click the refresh button to see your changes.<br><br>
  A checkmark will appear next to the permissions that the user has on that file!<br><br>
- To get more information on why or why not a permission is checked, click the i button next to the permission.<br><br>
- It will give you where the permissions are coming from!
+ To get more information on why or why not a permission is checked, click the i button next to the permission - this will tell you where a permission (either allow or deny) is coming from!
  </div>`;
 q_dialog.append(content_string)
 // q_dialog.value = "asklfjaslf";
